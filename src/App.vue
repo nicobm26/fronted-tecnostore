@@ -1,5 +1,5 @@
 <template>
-  <router-view>
+  <router-view v-on:completeLogin="completeLogin">
   </router-view>
 </template>
 
@@ -7,7 +7,20 @@
 
 
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    completeLogin: function(args) {
+      const {
+        access,
+        refresh
+      } = args;
+      localStorage.setItem('access_token', access);
+      localStorage.setItem('refresh_token', refresh);
+      this.$router.push({
+        name:"Home"
+      });
+    }
+  }
 }
 
 /**

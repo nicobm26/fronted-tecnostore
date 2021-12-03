@@ -1,12 +1,31 @@
-import HelloWorld from "@/components/HelloWorld";
 import Componente from "@/components/Componente";
+import PageNotFound from "@/components/PageNotFound";
+import LogIn from "@/components/LogIn";
+import Registro from "@/components/Registro";
+import Transaccion from "@/components/Transaccion";
+import Home from "@/components/Home";
 import {createRouter, createWebHistory} from "vue-router";
 
 const routes = [
     {
+        path: "/",
+        name: "logIn",
+        component: LogIn
+    },
+    {
+        path: "/registro",
+        name: "Registro",
+        component: Registro
+    },
+    {
+        path: "/transaccion",
+        name: "Transaccion",
+        component: Transaccion
+    },
+    {
         path: "/home",
-        name: "Inicio",
-        component: HelloWorld,
+        name: "Home",
+        component: Home,
         meta: {
             roles: ['admin']
         }
@@ -15,6 +34,10 @@ const routes = [
         path: "/form",
         name: "Forms",
         component: Componente
+    },
+    {
+        path: "/:catchAll(.*)",
+        component: PageNotFound
     }
 ];
 

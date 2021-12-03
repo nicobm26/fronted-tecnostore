@@ -17,7 +17,7 @@ import '@/assets/css/styles.css';
 import router from '@/router';
 
 const httpLink = createHttpLink({
-    uri: 'https://mision-tic-api-gateway.herokuapp.com',
+    uri: 'https://gateway-g71.herokuapp.com',
 })
 
 /*
