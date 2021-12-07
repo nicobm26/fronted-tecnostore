@@ -1,9 +1,15 @@
 <template>
-    Pagina Transacción
+    <MainLayout>
+        Pagina Transacción
+    </MainLayout>
 </template>
 <script>
+import MainLayout from '@/layout/MainLayout.vue'
 export default {
-    name: "Transaction"
+    name: "Transaction",
+    components: {
+        MainLayout
+    }
 }
 </script>
 <style scoped>

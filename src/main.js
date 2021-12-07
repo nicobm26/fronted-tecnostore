@@ -8,13 +8,18 @@ import { createApolloProvider } from '@vue/apollo-option'
 import '@fortawesome/fontawesome-free/css/all.css';
 // Estilos para usar primevue
 import 'primevue/resources/primevue.min.css';
+
+// Tema de primevue
 import 'primevue/resources/themes/md-light-indigo/theme.css'
+//import 'primevue/resources/themes/bootstrap4-light-blue/theme.css'
+
 import 'primeicons/primeicons.css';
 
 // Agregar nuestros estilos personalizados
 import '@/assets/css/styles.css';
 
 import router from '@/router';
+
 
 const httpLink = createHttpLink({
     uri: 'https://gateway-g71.herokuapp.com',
