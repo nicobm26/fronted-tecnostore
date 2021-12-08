@@ -6,6 +6,8 @@ import { createApolloProvider } from '@vue/apollo-option'
 
 // Estilos para los iconos
 import '@fortawesome/fontawesome-free/css/all.css';
+
+import PrimeVue from 'primevue/config';
 // Estilos para usar primevue
 import 'primevue/resources/primevue.min.css';
 
@@ -20,23 +22,30 @@ import '@/assets/css/styles.css';
 
 import router from '@/router';
 
+import {setContext} from '@apollo/client/link/context';
+
 
 const httpLink = createHttpLink({
     uri: 'https://gateway-g71.herokuapp.com',
 })
 
-/*
+
 const authLink = setContext((_, { headers }) => {
-    return {
-        headers: {
-            ...headers,
-            "Authorization": ""
+    const token = localStorage.getItem('access_token');
+    if (token) {
+        return {
+            headers: {
+                ...headers,
+                "Authorization": `Bearer ${token}`
+            }
         }
+    } else {
+        return headers
     }
-})*/
+});
 
 const apolloClient = new ApolloClient({
-    link: httpLink,
+    link: authLink.concat(httpLink),
     cache: new InMemoryCache()
 })
 
@@ -48,5 +57,6 @@ const app = createApp(App);
 
 app.use(apolloProvider);
 app.use(router);
+app.use(PrimeVue);
 
 app.mount('#app');

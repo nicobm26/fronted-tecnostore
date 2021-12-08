@@ -1,6 +1,6 @@
 <template>
-    <div class="main-layout">
-        <header>
+    <div class="main-layout" >
+        <header @click="evento">
             {{username}}
             <i class="fas fa-user-circle ml-5px"></i>
         </header>
@@ -12,7 +12,20 @@
 <script>
 export default {
     name: 'MainLayout',
-    props: ['username']
+    data: function() {
+        return {
+            username: ''
+        }
+    },
+    mounted:function(){
+        this.username = localStorage.getItem('username')|| '';
+    },
+    methods: {
+        evento: function(){
+            console.log('mievento');
+            this.$emit('mievento');
+        }
+    }
 }
 </script>
 <style scoped>

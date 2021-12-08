@@ -73,7 +73,8 @@ export default {
                 } = response.data.logIn;
                 this.$emit('completeLogin', {
                     access, 
-                    refresh
+                    refresh,
+                    username: this.username
                 });
             }).catch(() => {
                 // mande un usuario que no existe

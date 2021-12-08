@@ -1,5 +1,7 @@
 <template>
-  <router-view v-on:completeLogin="completeLogin">
+  <router-view v-on:completeLogin="completeLogin"
+                v-on:logOut="logOut"
+                v-on:otroevento="otroEvento">
   </router-view>
 </template>
 
@@ -12,13 +14,26 @@ export default {
     completeLogin: function(args) {
       const {
         access,
-        refresh
+        refresh,
+        username
       } = args;
       localStorage.setItem('access_token', access);
       localStorage.setItem('refresh_token', refresh);
+      localStorage.setItem('username', username);
       this.$router.push({
         name:"Home"
       });
+    },
+    logOut: function() {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      localStorage.removeItem('username');
+      this.$router.push({
+        name: 'logIn'
+      })
+    },
+    otroEvento: function() {
+      alert('captura evento de nieto');
     }
   }
 }
