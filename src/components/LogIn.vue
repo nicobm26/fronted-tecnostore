@@ -37,8 +37,8 @@ export default {
     },
     data: function(){
         return {
-            username: 'pperez',
-            password: 'pass1234'
+            username: 'nicol',
+            password: 'nicolv'
         }
     },
     methods: {

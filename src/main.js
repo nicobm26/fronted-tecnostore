@@ -22,30 +22,30 @@ import '@/assets/css/styles.css';
 
 import router from '@/router';
 
-import {setContext} from '@apollo/client/link/context';
+// import {setContext} from '@apollo/client/link/context';
 
 
 const httpLink = createHttpLink({
-    uri: 'https://gateway-g71.herokuapp.com',
+    uri: 'http://localhost:4000',
 })
 
 
-const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-        return {
-            headers: {
-                ...headers,
-                "Authorization": `Bearer ${token}`
-            }
-        }
-    } else {
-        return headers
-    }
-});
+// const authLink = setContext((_, { headers }) => {
+//     const token = localStorage.getItem('access_token');
+//     if (token) {
+//         return {
+//             headers: {
+//                 ...headers,
+//                 "Authorization": `Bearer ${token}`
+//             }
+//         }
+//     } else {
+//         return headers
+//     }
+// });
 
 const apolloClient = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: httpLink,
     cache: new InMemoryCache()
 })
 

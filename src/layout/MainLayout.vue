@@ -19,6 +19,7 @@ export default {
     },
     mounted:function(){
         this.username = localStorage.getItem('username')|| '';
+        console.log(this.username);
     },
     methods: {
         evento: function(){
